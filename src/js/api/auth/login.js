@@ -1,5 +1,6 @@
 import { API_AUTH_LOGIN } from '../constants';
-import { setAccessToken } from './token';
+import { setAccessToken } from '../../utilities/token';
+import { headers } from '../../utilities/headers';
 
 export async function login({ email, password }) {
   const url = `${API_AUTH_LOGIN}`;
@@ -7,9 +8,7 @@ export async function login({ email, password }) {
   const options = {
     method: 'POST',
     body: data,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: headers(),
   };
 
   try {
@@ -18,9 +17,7 @@ export async function login({ email, password }) {
 
     setAccessToken(json.data.accessToken);
 
-    setTimeout(() => {
-      window.location.href = '/';
-    }, 700);
+    window.location.href = '/';
 
     return json;
   } catch (error) {
