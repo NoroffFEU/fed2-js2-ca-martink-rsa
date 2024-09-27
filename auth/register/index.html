@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,6 +22,7 @@
           maxlength="20"
           pattern="^[\w]+$"
           title="Please enter a username using only letters and numbers"
+          value="martinkrugerstudent0"
         />
       </div>
 
@@ -34,6 +35,7 @@
           required
           pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
           title="Please enter a valid noroff.no or stud.noroff.no address"
+          value="martinkrugerstudent0@stud.noroff.no"
         />
       </div>
 
@@ -45,7 +47,23 @@
           id="password"
           required
           minlength="8"
+          value="martinkrugerstudent0"
         />
+      </div>
+
+      <div>
+        <label for="bio">Bio</label>
+        <input type="bio" name="bio" id="bio" value="This is my bio" />
+      </div>
+
+      <div>
+        <label for="avatar">Avatar image</label>
+        <input type="avatar" name="avatar" id="avatar" value="" />
+      </div>
+
+      <div>
+        <label for="banner">Banner image</label>
+        <input type="banner" name="banner" id="banner" value="" />
       </div>
 
       <a href="/auth/login/">Login</a>
