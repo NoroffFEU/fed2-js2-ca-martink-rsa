@@ -20,7 +20,7 @@ export async function register({ name, email, password, bio, banner, avatar }) {
   try {
     const response = await fetch(url, options);
     const json = await response.json();
-    console.log(json);
+    return json;
   } catch (error) {
     console.error(error);
   }
