@@ -6,3 +6,7 @@ export function getAccessToken() {
   const accessToken = localStorage.getItem('token');
   return accessToken;
 }
+
+export function clearAccessToken() {
+  localStorage.removeItem('token');
+}
