@@ -1,6 +1,6 @@
 import { API_KEY } from '../api/constants';
 
-export function headers({ useAuth = false }) {
+export function headers({ useAuth = false } = {}) {
   const headers = new Headers();
 
   headers.append('Content-Type', 'application/json');
