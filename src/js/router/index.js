@@ -2,7 +2,6 @@
 // In order to add additional pages, you will need to implement them below
 // You may change the behaviour or approach of this file if you choose
 export default async function router(pathname = window.location.pathname) {
-  console.log('Router');
   switch (pathname) {
     case '/':
       await import('./views/home.js');
@@ -15,6 +14,12 @@ export default async function router(pathname = window.location.pathname) {
       break;
     case '/auth/register/':
       await import('./views/register.js');
+      break;
+    case '/listing/':
+      await import('./views/listing.js');
+      break;
+    case '/listing/single/':
+      await import('./views/listingSingle.js');
       break;
     case '/post/':
       await import('./views/post.js');
