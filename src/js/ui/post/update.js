@@ -1,5 +1,10 @@
 import { updatePost } from '../../api/post/update';
 
+/**
+ * Handles the post update process.
+ *
+ * @param {Event} event - The submit event.
+ */
 export async function onUpdatePost(event) {
   event.preventDefault();
 

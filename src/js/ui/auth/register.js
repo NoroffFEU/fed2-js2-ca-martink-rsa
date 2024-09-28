@@ -1,5 +1,11 @@
 import { register } from '../../api/auth/register';
 
+/**
+ * Handles the registration form submission.
+ *
+ * @param {Event} event - The event object from the form submission.
+ * @returns {void}
+ */
 export async function onRegister(event) {
   event.preventDefault();
 

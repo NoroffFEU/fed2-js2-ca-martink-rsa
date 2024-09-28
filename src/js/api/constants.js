@@ -1,7 +1,10 @@
 // Use Postman, or JavaScript to get your API key
 // In Workflow we will learn how to secure this information
+
+/** The API key for the application */
 export const API_KEY = import.meta.env.VITE_API_KEY;
 
+/** The base API end-point for the application */
 export const API_BASE = 'https://v2.api.noroff.dev';
 
 export const API_AUTH = `${API_BASE}/auth`;
@@ -18,6 +21,7 @@ export const API_SOCIAL_POSTS = `${API_SOCIAL}/posts`;
 
 export const API_SOCIAL_PROFILES = `${API_SOCIAL}/profiles`;
 
+/** Author's name */
 export const AUTHOR_NAME = 'martinkrugerstudent0';
 
 export const AUTHOR_EMAIL = 'martinkrugerstudent0@stud.noroff.no';

@@ -1,5 +1,12 @@
 import { API_KEY } from '../api/constants';
 
+/**
+ * Creates a new Headers object with the required headers.
+ *
+ * @param {Object} options - The options for the headers.
+ * @param {boolean} options.useAuth - Whether to include the Authorization header.
+ * @returns {Headers} The headers for the request.
+ */
 export function headers({ useAuth = false } = {}) {
   const headers = new Headers();
 

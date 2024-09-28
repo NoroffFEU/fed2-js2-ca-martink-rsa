@@ -1,5 +1,11 @@
 import { createPost } from '../../api/post/create';
 
+/**
+ * Handles the post creation process.
+ *
+ * @param {Event} event - The event object from the form submission.
+ * @returns {void}
+ */
 export async function onCreatePost(event) {
   event.preventDefault();
 

@@ -5,6 +5,20 @@ authGuard();
 
 const listingContainer = document.getElementById('listing-container');
 
+/**
+ * Generates an HTML element for a post.
+ *
+ * @param {Object} post - The post data.
+ * @param {string} post.title - The title of the post.
+ * @param {string} post.body - The body of the post.
+ * @param {string[]} [post.tags] - The tags associated with the post.
+ * @param {Object} [post.media] - The media associated with the post.
+ * @param {string} post.created - The creation timestamp of the post.
+ * @param {string} [post.updated] - The last update timestamp of the post.
+ * @param {Object} post.author - The author of the post.
+ * @param {string} post.author.name - The name of the author.
+ * @returns {HTMLElement} The generated post element.
+ */
 function generatePostHtml(post) {
   const postContainer = document.createElement('article');
   postContainer.classList.add('post');
@@ -49,11 +63,19 @@ function generatePostHtml(post) {
   return postContainer;
 }
 
+/**
+ * Generates and displays a post on the page.
+ *
+ * @param {Object} post - The post data.
+ */
 function generateAndDisplayPost(post) {
   const postHtml = generatePostHtml(post);
   listingContainer.appendChild(postHtml);
 }
 
+/**
+ * Handles the listing single page.
+ */
 async function handleListingPage() {
   if (!listingContainer) return;
 
