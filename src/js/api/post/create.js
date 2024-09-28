@@ -14,6 +14,7 @@ export async function createPost({ title, body, tags, media }) {
     const response = await fetch(url, options);
     const json = await response.json();
     console.log(json);
+    // Todo: Navigate to post after creation
     // window.location.href = `/post/${json.data.id}`;
     return json;
   } catch (error) {
