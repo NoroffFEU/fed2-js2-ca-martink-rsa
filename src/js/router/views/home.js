@@ -72,7 +72,7 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   deleteButton.textContent = 'Delete';
   deleteButton.addEventListener('click', async () => {
     await deletePost(id);
-    window.location.reload();
+    handleHomePage();
   });
 
   buttonsContainer.appendChild(deleteButton);
