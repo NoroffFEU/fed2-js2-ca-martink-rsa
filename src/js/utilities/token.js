@@ -17,7 +17,9 @@ export function getAccessToken() {
   return accessToken;
 }
 
-/** * Removes the access token from local storage. */
+/**
+ * Removes the access token from local storage.
+ */
 export function clearAccessToken() {
   localStorage.removeItem('token');
 }
