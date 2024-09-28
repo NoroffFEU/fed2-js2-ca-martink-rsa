@@ -5,13 +5,30 @@ authGuard();
 
 const listingContainer = document.getElementById('listing-container');
 
-function generatePostHtml({ id, title, body, tags, media, created, updated }) {
+function generatePostHtml({
+  id,
+  title,
+  body,
+  tags,
+  media,
+  created,
+  updated,
+  author: { name },
+}) {
   const postContainer = document.createElement('article');
   postContainer.classList.add('post');
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = title;
-  postContainer.appendChild(titleElement);
+
+  const postLink = document.createElement('a');
+  postLink.href = `./single/?id=${id}`;
+  postLink.appendChild(titleElement);
+  postContainer.appendChild(postLink);
+
+  const authorElement = document.createElement('p');
+  authorElement.textContent = `Author: ${name}`;
+  postContainer.appendChild(authorElement);
 
   const bodyElement = document.createElement('p');
   bodyElement.textContent = body;
@@ -46,12 +63,7 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
     postContainer.appendChild(updatedElement);
   }
 
-  const postLink = document.createElement('a');
-  postLink.href = `./single/?id=${id}`;
-
-  postLink.appendChild(postContainer);
-
-  return postLink;
+  return postContainer;
 }
 
 function generatePostsAndDisplay(posts) {

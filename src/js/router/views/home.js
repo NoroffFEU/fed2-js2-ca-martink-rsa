@@ -1,15 +1,14 @@
-import { clearAccessToken } from '../../utilities/token';
 import { authGuard } from '../../utilities/authGuard';
 import { readPostsByUser } from '../../api/post/read';
 import { AUTHOR_NAME } from '../../api/constants';
 import { deletePost } from '../../api/post/delete';
+import { onLogout } from '../../ui/auth/logout';
 
 authGuard();
 
 const logoutButton = document.getElementById('logout-button');
 logoutButton.addEventListener('click', () => {
-  clearAccessToken();
-  authGuard();
+  onLogout();
 });
 
 function generatePostHtml({ id, title, body, tags, media, created, updated }) {

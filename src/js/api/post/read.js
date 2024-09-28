@@ -12,7 +12,7 @@ export async function readPost(id) {
 }
 
 export async function readPosts(limit = 12, page = 1, tag) {
-  const url = `${API_SOCIAL_POSTS}?limit=${limit}&page=${page}&tag=${tag}`;
+  const url = `${API_SOCIAL_POSTS}?limit=${limit}&page=${page}&tag=${tag}&_author=true`;
   try {
     const posts = await doFetch({ url, useAuth: true });
     return posts.data;
