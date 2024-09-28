@@ -1,17 +1,29 @@
-import { clearAccessToken } from '../../utilities/token';
 import { authGuard } from '../../utilities/authGuard';
 import { readPostsByUser } from '../../api/post/read';
 import { AUTHOR_NAME } from '../../api/constants';
 import { deletePost } from '../../api/post/delete';
+import { onLogout } from '../../ui/auth/logout';
 
 authGuard();
 
 const logoutButton = document.getElementById('logout-button');
 logoutButton.addEventListener('click', () => {
-  clearAccessToken();
-  authGuard();
+  onLogout();
 });
 
+/**
+ * Generates an HTML element for a post.
+ *
+ * @param {Object} post - The post data.
+ * @param {string} post.id - The ID of the post.
+ * @param {string} post.title - The title of the post.
+ * @param {string} post.body - The body of the post.
+ * @param {string[]} [post.tags] - The tags associated with the post.
+ * @param {Object} [post.media] - The media associated with the post.
+ * @param {string} post.created - The creation timestamp of the post.
+ * @param {string} [post.updated] - The last update timestamp of the post.
+ * @returns {HTMLElement} The generated post element.
+ */
 function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   const postContainer = document.createElement('article');
   postContainer.classList.add('post');
@@ -83,16 +95,23 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   return postContainer;
 }
 
+/**
+ * Generates and displays post elements on the page.
+ *
+ * @param {Object[]} posts - The list of posts to display.
+ */
 function generateAndDisplayPosts(posts) {
   const postsContainer = document.getElementById('posts-container');
   postsContainer.textContent = '';
   posts.forEach((post) => {
-    console.log(post);
     const postHtml = generatePostHtml(post);
     postsContainer.appendChild(postHtml);
   });
 }
 
+/**
+ * Handles the home page by fetching posts and displaying them.
+ */
 async function handleHomePage() {
   const posts = await readPostsByUser(AUTHOR_NAME);
   generateAndDisplayPosts(posts);

@@ -5,13 +5,45 @@ authGuard();
 
 const listingContainer = document.getElementById('listing-container');
 
-function generatePostHtml({ id, title, body, tags, media, created, updated }) {
+/**
+ * Generates an HTML element for a post.
+ *
+ * @param {Object} post - The post data.
+ * @param {string} post.id - The ID of the post.
+ * @param {string} post.title - The title of the post.
+ * @param {string} post.body - The body of the post.
+ * @param {string[]} [post.tags] - The tags associated with the post.
+ * @param {Object} [post.media] - The media associated with the post.
+ * @param {string} post.created - The creation timestamp of the post.
+ * @param {string} [post.updated] - The last update timestamp of the post.
+ * @param {Object} post.author - The author of the post.
+ * @param {string} post.author.name - The name of the author.
+ * @returns {HTMLElement} The generated post element.
+ */
+function generatePostHtml({
+  id,
+  title,
+  body,
+  tags,
+  media,
+  created,
+  updated,
+  author: { name },
+}) {
   const postContainer = document.createElement('article');
   postContainer.classList.add('post');
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = title;
-  postContainer.appendChild(titleElement);
+
+  const postLink = document.createElement('a');
+  postLink.href = `./single/?id=${id}`;
+  postLink.appendChild(titleElement);
+  postContainer.appendChild(postLink);
+
+  const authorElement = document.createElement('p');
+  authorElement.textContent = `Author: ${name}`;
+  postContainer.appendChild(authorElement);
 
   const bodyElement = document.createElement('p');
   bodyElement.textContent = body;
@@ -46,23 +78,25 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
     postContainer.appendChild(updatedElement);
   }
 
-  const postLink = document.createElement('a');
-  postLink.href = `./single/?id=${id}`;
-
-  postLink.appendChild(postContainer);
-
-  return postLink;
+  return postContainer;
 }
 
+/**
+ * Generates post elements and displays them in the listing container.
+ *
+ * @param {Object[]} posts - The list of posts to display.
+ */
 function generatePostsAndDisplay(posts) {
   listingContainer.textContent = '';
   posts.forEach((post) => {
-    console.log(post);
     const postHtml = generatePostHtml(post);
     listingContainer.appendChild(postHtml);
   });
 }
 
+/**
+ * Handles the listing page.
+ */
 async function handleListingPage() {
   if (!listingContainer) return;
 

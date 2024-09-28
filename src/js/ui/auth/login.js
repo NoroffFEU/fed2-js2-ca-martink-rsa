@@ -1,5 +1,11 @@
 import { login } from '../../api/auth/login';
 
+/**
+ * Handles the login form submission.
+ *
+ * @param {Event} event - The event object from the form submission.
+ * @returns {void}
+ */
 export async function onLogin(event) {
   event.preventDefault();
 
