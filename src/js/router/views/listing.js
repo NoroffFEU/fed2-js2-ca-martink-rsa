@@ -45,12 +45,12 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
     postContainer.appendChild(updatedElement);
   }
 
-  const readMoreLink = document.createElement('a');
-  readMoreLink.href = `./single/?id=${id}`;
+  const postLink = document.createElement('a');
+  postLink.href = `./single/?id=${id}`;
 
-  readMoreLink.appendChild(postContainer);
+  postLink.appendChild(postContainer);
 
-  return readMoreLink;
+  return postLink;
 }
 
 function generatePostsAndDisplay(posts) {
