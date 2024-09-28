@@ -9,7 +9,9 @@ export async function doFetch({ url, options = {}, useAuth = false }) {
 
   try {
     const response = await fetch(url, combinedOptions);
+    console.log(response);
     const json = await response.json();
+    console.log(json);
     return json;
   } catch (error) {
     console.error(error);

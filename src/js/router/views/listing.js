@@ -20,6 +20,7 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   if (tags && tags.length > 0) {
     const tagsElement = document.createElement('ul');
     tags.forEach((tag) => {
+      if (!tag) return;
       const tagItem = document.createElement('li');
       tagItem.textContent = tag;
       tagsElement.appendChild(tagItem);
