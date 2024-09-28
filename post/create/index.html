@@ -8,8 +8,31 @@
   </head>
   <body>
     <h1>Create Post</h1>
-
     <form name="createPost">
+      <div>
+        <label for="title">Title</label>
+        <input id="title" name="title" required value="Post title" />
+      </div>
+      <div>
+        <label for="body">Message</label>
+        <input id="body" name="body" value="This is the post body" />
+      </div>
+      <div>
+        <label for="tags">Tags</label>
+        <input id="tags" name="tags" value="action adventure" />
+      </div>
+      <div>
+        <label for="image">Image</label>
+        <input
+          id="image"
+          name="image"
+          value="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
+      </div>
+      <div>
+        <label for="image-alt">Image alternative text</label>
+        <input id="image-alt" name="image-alt" value="Post image" />
+      </div>
       <button>Create Post</button>
     </form>
   </body>

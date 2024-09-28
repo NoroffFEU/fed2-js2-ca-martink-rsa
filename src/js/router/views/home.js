@@ -1,4 +1,4 @@
-import { clearAccessToken } from '../../api/auth/token';
+import { clearAccessToken } from '../../utilities/token';
 import { authGuard } from '../../utilities/authGuard';
 
 authGuard();
