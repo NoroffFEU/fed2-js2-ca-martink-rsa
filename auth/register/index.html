@@ -4,25 +4,23 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Chattery - Register</title>
     <script type="module" src="/src/app.js"></script>
   </head>
 
   <body>
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="justify-content: center">
       <img
         src="/images/logo-banner.png"
         alt="Chattery Logo"
         class="logo-banner drop-shadow-1"
       />
-
       <div class="form-wrapper drop-shadow-2">
         <form name="register" class="form">
           <h1>Sign up</h1>
           <p>Create an account or <a href="../login/">sign in.</a></p>
-
           <div>
-            <label for="name">Name</label>
+            <label for="name">Name*</label>
             <input
               id="name"
               type="text"
@@ -34,9 +32,8 @@
               placeholder="Your name. Only letters and numbers are permitted."
             />
           </div>
-
           <div>
-            <label for="email">Email</label>
+            <label for="email">Email*</label>
             <input
               id="email"
               type="email"
@@ -47,9 +44,8 @@
               placeholder="Your email address"
             />
           </div>
-
           <div>
-            <label for="password">Password</label>
+            <label for="password">Password*</label>
             <input
               type="password"
               name="password"
@@ -59,12 +55,10 @@
               placeholder="Your password"
             />
           </div>
-
           <div>
             <label for="bio">Bio</label>
             <input type="bio" name="bio" id="bio" placeholder="Your bio" />
           </div>
-
           <div>
             <label for="avatar">Avatar image</label>
             <input
@@ -74,7 +68,6 @@
               placeholder="Avatar image URL"
             />
           </div>
-
           <div>
             <label for="banner">Banner image</label>
             <input
@@ -84,7 +77,6 @@
               placeholder="Banner image URL"
             />
           </div>
-
           <button class="button button-big">Sign up</button>
         </form>
       </div>

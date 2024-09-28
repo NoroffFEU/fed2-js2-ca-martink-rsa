@@ -4,35 +4,54 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Chattery - Edit post</title>
     <script type="module" src="/src/app.js"></script>
   </head>
 
   <body>
-    <h1>Edit Post</h1>
+    <div class="page-wrapper">
+      <header class="page-header">
+        <a href="/"
+          ><img src="/images/logo.png" alt="Chattery logo" class="logo"
+        /></a>
+        <nav class="page-nav">
+          <a href="/post/create/">Create Post</a>
+          <a href="/listing/">Listing</a>
+          <button id="logout-button" class="button-styled-as-link">
+            Logout
+          </button>
+          <a class="profile-link" href="/profile/"
+            ><div class="profile-icon">Profile</div></a
+          >
+        </nav>
+      </header>
+      <div class="page-container">
+        <h1>Edit Post</h1>
 
-    <form name="editPost">
-      <div>
-        <label for="title">Title</label>
-        <input id="title" name="title" required />
+        <form name="editPost" class="form">
+          <div>
+            <label for="title">Title</label>
+            <input id="title" name="title" required />
+          </div>
+          <div>
+            <label for="body">Message</label>
+            <input id="body" name="body" />
+          </div>
+          <div>
+            <label for="tags">Tags</label>
+            <input id="tags" name="tags" />
+          </div>
+          <div>
+            <label for="image">Image</label>
+            <input id="image" name="image" />
+          </div>
+          <div>
+            <label for="image-alt">Image alternative text</label>
+            <input id="image-alt" name="image-alt" />
+          </div>
+          <button class="button button-big">Edit Post</button>
+        </form>
       </div>
-      <div>
-        <label for="body">Message</label>
-        <input id="body" name="body" />
-      </div>
-      <div>
-        <label for="tags">Tags</label>
-        <input id="tags" name="tags" />
-      </div>
-      <div>
-        <label for="image">Image</label>
-        <input id="image" name="image" />
-      </div>
-      <div>
-        <label for="image-alt">Image alternative text</label>
-        <input id="image-alt" name="image-alt" />
-      </div>
-      <button>Edit Post</button>
-    </form>
+    </div>
   </body>
 </html>

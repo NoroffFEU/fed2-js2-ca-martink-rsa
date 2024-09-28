@@ -3,37 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Chattery - Create post</title>
     <script type="module" src="/src/app.js"></script>
   </head>
   <body>
-    <h1>Create Post</h1>
-    <form name="createPost">
-      <div>
-        <label for="title">Title</label>
-        <input id="title" name="title" required value="Post title" />
+    <div class="page-wrapper">
+      <header class="page-header">
+        <a href="/"
+          ><img src="/images/logo.png" alt="Chattery logo" class="logo"
+        /></a>
+        <nav class="page-nav">
+          <a href="/post/create/">Create Post</a>
+          <a href="/listing/">Listing</a>
+          <button id="logout-button" class="button-styled-as-link">
+            Logout
+          </button>
+          <a class="profile-link" href="/profile/"
+            ><div class="profile-icon">Profile</div></a
+          >
+        </nav>
+      </header>
+      <div class="page-container">
+        <h1>Create Post</h1>
+        <form name="createPost" class="form">
+          <div>
+            <label for="title">Title</label>
+            <input
+              id="title"
+              name="title"
+              required
+              placeholder="Your post title"
+            />
+          </div>
+          <div>
+            <label for="body">Message</label>
+            <input id="body" name="body" placeholder="Your post message" />
+          </div>
+          <div>
+            <label for="tags">Tags</label>
+            <input
+              id="tags"
+              name="tags"
+              placeholder="Tags separated with a space"
+            />
+          </div>
+          <div>
+            <label for="image">Image URL</label>
+            <input
+              id="image"
+              name="image"
+              placeholder="URL for the image of your post"
+            />
+          </div>
+          <div>
+            <label for="image-alt">Image alternative text</label>
+            <input
+              id="image-alt"
+              name="image-alt"
+              placeholder="Alternative text for the image above"
+            />
+          </div>
+          <button class="button button-big">Create Post</button>
+        </form>
       </div>
-      <div>
-        <label for="body">Message</label>
-        <input id="body" name="body" value="This is the post body" />
-      </div>
-      <div>
-        <label for="tags">Tags</label>
-        <input id="tags" name="tags" value="action adventure" />
-      </div>
-      <div>
-        <label for="image">Image</label>
-        <input
-          id="image"
-          name="image"
-          value="https://images.unsplash.com/photo-1727112658582-fdb2e08878d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-      </div>
-      <div>
-        <label for="image-alt">Image alternative text</label>
-        <input id="image-alt" name="image-alt" value="Post image" />
-      </div>
-      <button>Create Post</button>
-    </form>
+    </div>
   </body>
 </html>

@@ -23,8 +23,6 @@ export async function onUpdatePost(event) {
   };
 
   await updatePost(id, { title, body, tags, media });
-  console.log('Update post');
 
-  // Redirect to the post page
-  // window.location.href = `/post/?id=${id}`;
+  window.location.href = `../../listing/single/?id=${id}`;
 }
