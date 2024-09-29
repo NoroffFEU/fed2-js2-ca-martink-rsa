@@ -1,10 +1,10 @@
-import { authGuard } from '../../utilities/authGuard';
-import { readPostsByUser } from '../../api/post/read';
-import { AUTHOR_NAME } from '../../api/constants';
-import { onDeletePost } from '../../ui/post/delete';
+import { readPosts } from '../../api/post/read';
 import { setLogoutListener } from '../../ui/global/logout';
+import { authGuard } from '../../utilities/authGuard';
 
 authGuard();
+
+const listingContainer = document.getElementById('listing-container');
 setLogoutListener();
 
 /**
@@ -18,9 +18,20 @@ setLogoutListener();
  * @param {Object} [post.media] - The media associated with the post.
  * @param {string} post.created - The creation timestamp of the post.
  * @param {string} [post.updated] - The last update timestamp of the post.
+ * @param {Object} post.author - The author of the post.
+ * @param {string} post.author.name - The name of the author.
  * @returns {HTMLElement} The generated post element.
  */
-function generatePostHtml({ id, title, body, tags, media, created, updated }) {
+function generatePostHtml({
+  id,
+  title,
+  body,
+  tags,
+  media,
+  created,
+  updated,
+  author: { name },
+}) {
   const postContainer = document.createElement('article');
   postContainer.classList.add('post', 'container-1');
 
@@ -28,11 +39,18 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   titleElement.textContent = title;
 
   const postLink = document.createElement('a');
-  postLink.href = `./listing/single/?id=${id}`;
-
+  postLink.href = `./single/?id=${id}`;
   postLink.appendChild(titleElement);
-
   postContainer.appendChild(postLink);
+
+  const authorElement = document.createElement('p');
+  authorElement.textContent = `Author: ${name}`;
+
+  const authorLink = document.createElement('a');
+  authorLink.href = `../profiles/?name=${name}`;
+  authorLink.appendChild(authorElement);
+
+  postContainer.appendChild(authorLink);
 
   const bodyElement = document.createElement('p');
   bodyElement.textContent = body;
@@ -67,49 +85,30 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
     postContainer.appendChild(updatedElement);
   }
 
-  const buttonsContainer = document.createElement('div');
-
-  const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  editButton.addEventListener('click', () => {
-    window.location.href = `./post/edit/?id=${id}`;
-  });
-
-  buttonsContainer.appendChild(editButton);
-
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.addEventListener('click', async () => {
-    onDeletePost(id, handleHomePage);
-  });
-
-  buttonsContainer.appendChild(deleteButton);
-
-  postContainer.appendChild(buttonsContainer);
-
   return postContainer;
 }
 
 /**
- * Generates and displays post elements on the page.
+ * Generates post elements and displays them in the listing container.
  *
  * @param {Object[]} posts - The list of posts to display.
  */
-function generateAndDisplayPosts(posts) {
-  const postsContainer = document.getElementById('posts-container');
-  postsContainer.textContent = '';
+function generatePostsAndDisplay(posts) {
+  listingContainer.textContent = '';
   posts.forEach((post) => {
     const postHtml = generatePostHtml(post);
-    postsContainer.appendChild(postHtml);
+    listingContainer.appendChild(postHtml);
   });
 }
 
 /**
- * Handles the home page by fetching posts and displaying them.
+ * Handles the listing page.
  */
-async function handleHomePage() {
-  const posts = await readPostsByUser(AUTHOR_NAME);
-  generateAndDisplayPosts(posts);
+async function handleListingPage() {
+  if (!listingContainer) return;
+
+  const posts = await readPosts();
+  generatePostsAndDisplay(posts);
 }
 
-handleHomePage();
+handleListingPage();

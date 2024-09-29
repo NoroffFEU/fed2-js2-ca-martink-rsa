@@ -1,8 +1,10 @@
-import { onCreatePost } from "../../ui/post/create";
-import { authGuard } from "../../utilities/authGuard";
+import { setLogoutListener } from '../../ui/global/logout';
+import { onCreatePost } from '../../ui/post/create';
+import { authGuard } from '../../utilities/authGuard';
 
 authGuard();
+setLogoutListener();
 
 const form = document.forms.createPost;
 
-form.addEventListener("submit", onCreatePost);
+form.addEventListener('submit', onCreatePost);
