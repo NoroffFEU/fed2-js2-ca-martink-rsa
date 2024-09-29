@@ -1,15 +1,11 @@
 import { authGuard } from '../../utilities/authGuard';
 import { readPostsByUser } from '../../api/post/read';
 import { AUTHOR_NAME } from '../../api/constants';
-import { deletePost } from '../../api/post/delete';
-import { onLogout } from '../../ui/auth/logout';
+import { onDeletePost } from '../../ui/post/delete';
+import { setLogoutListener } from '../../ui/global/logout';
 
 authGuard();
-
-const logoutButton = document.getElementById('logout-button');
-logoutButton.addEventListener('click', () => {
-  onLogout();
-});
+setLogoutListener();
 
 /**
  * Generates an HTML element for a post.
@@ -26,7 +22,7 @@ logoutButton.addEventListener('click', () => {
  */
 function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   const postContainer = document.createElement('article');
-  postContainer.classList.add('post');
+  postContainer.classList.add('post', 'container-1');
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = title;
@@ -84,8 +80,7 @@ function generatePostHtml({ id, title, body, tags, media, created, updated }) {
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
   deleteButton.addEventListener('click', async () => {
-    await deletePost(id);
-    handleHomePage();
+    onDeletePost(id, handleHomePage);
   });
 
   buttonsContainer.appendChild(deleteButton);

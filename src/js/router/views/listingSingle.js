@@ -1,9 +1,11 @@
 import { readPost } from '../../api/post/read';
+import { setLogoutListener } from '../../ui/global/logout';
 import { authGuard } from '../../utilities/authGuard';
 
 authGuard();
 
 const listingContainer = document.getElementById('listing-container');
+setLogoutListener();
 
 /**
  * Generates an HTML element for a post.
@@ -21,7 +23,7 @@ const listingContainer = document.getElementById('listing-container');
  */
 function generatePostHtml(post) {
   const postContainer = document.createElement('article');
-  postContainer.classList.add('post');
+  postContainer.classList.add('post', 'container-1');
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = post.title;

@@ -5,6 +5,7 @@
   --background-color-1: #98b1b6;
   --background-color-2: #fcf8e7;
   --button-color-1: #3a6d85;
+  --primary-color-main: #3a6d85;
   --container-border-1: 13px;
 }
 
@@ -78,6 +79,7 @@ a {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .page-header {
@@ -101,19 +103,12 @@ a {
   margin-right: 0;
 }
 
-/* Posts */
-
-.post {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #2d2b21;
-  padding: 10px;
-}
-
-.post img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
+/* Containers */
+.container-1 {
+  background-color: var(--background-color-2);
+  padding: 20px;
+  border-radius: var(--container-border-1);
+  margin-bottom: 20px;
 }
 
 /* Forms */
@@ -128,7 +123,7 @@ a {
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-2);
-  min-width: 523px;
+  max-width: 523px;
   padding: 54px;
   border-radius: var(--container-border-1);
 }
@@ -167,4 +162,76 @@ a {
   height: 60px;
   background-color: lightslategray;
   border-radius: 50%;
+}
+
+/* Loading spinners */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: var(--primary-color-main);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+/* Profiles */
+
+.profile-container {
+  margin-top: 260px;
+  z-index: 999;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: 10px;
+  left: calc(50% - 70px);
+  border-radius: 50%;
+  background-color: var(--primary-color-main);
+  border-radius: 50%;
+}
+
+.avatar-img {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+}
+
+.banner-container {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 190px;
+  background-color: var(--primary-color-main);
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Post */
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.post img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
