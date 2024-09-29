@@ -3,14 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Chattery - Create post</title>
     <script type="module" src="/src/app.js"></script>
   </head>
   <body>
-    <h1>Create Post</h1>
-
-    <form name="createPost">
-      <button>Create Post</button>
-    </form>
+    <div class="page-wrapper">
+      <header class="page-header">
+        <a href="/"
+          ><img src="/images/logo.png" alt="Chattery logo" class="logo"
+        /></a>
+        <nav class="page-nav">
+          <a href="/post/create/">Create Post</a>
+          <a href="/listing/">Posts</a>
+          <button id="logout-button" class="button-styled-as-link">
+            Logout
+          </button>
+          <a class="profile-link" href="/profile/"
+            ><div class="profile-icon">Profile</div></a
+          >
+        </nav>
+      </header>
+      <div class="page-container">
+        <h1>Create Post</h1>
+        <form name="createPost" class="form">
+          <div>
+            <label for="title">Title</label>
+            <input
+              id="title"
+              name="title"
+              required
+              placeholder="Your post title"
+            />
+          </div>
+          <div>
+            <label for="body">Message</label>
+            <input id="body" name="body" placeholder="Your post message" />
+          </div>
+          <div>
+            <label for="tags">Tags</label>
+            <input
+              id="tags"
+              name="tags"
+              placeholder="Tags separated with a space"
+            />
+          </div>
+          <div>
+            <label for="image">Image URL</label>
+            <input
+              id="image"
+              name="image"
+              placeholder="URL for the image of your post"
+            />
+          </div>
+          <div>
+            <label for="image-alt">Image alternative text</label>
+            <input
+              id="image-alt"
+              name="image-alt"
+              placeholder="Alternative text for the image above"
+            />
+          </div>
+          <button class="button button-big">Create Post</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
