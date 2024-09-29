@@ -1,9 +1,11 @@
 import { API_SOCIAL_PROFILES, AUTHOR_NAME } from '../../api/constants';
+import { setLogoutListener } from '../../ui/global/logout';
 import { onUpdateProfile } from '../../ui/profile/update';
 import { authGuard } from '../../utilities/authGuard';
 import { doFetch } from '../../utilities/fetch';
 
 authGuard();
+setLogoutListener();
 
 const form = document.forms.updateProfile;
 

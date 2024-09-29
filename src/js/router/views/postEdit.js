@@ -1,8 +1,10 @@
 import { readPost } from '../../api/post/read';
+import { setLogoutListener } from '../../ui/global/logout';
 import { onUpdatePost } from '../../ui/post/update';
 import { authGuard } from '../../utilities/authGuard';
 
 authGuard();
+setLogoutListener();
 
 const form = document.forms.editPost;
 form.addEventListener('submit', onUpdatePost);

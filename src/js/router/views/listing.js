@@ -1,9 +1,11 @@
 import { readPosts } from '../../api/post/read';
+import { setLogoutListener } from '../../ui/global/logout';
 import { authGuard } from '../../utilities/authGuard';
 
 authGuard();
 
 const listingContainer = document.getElementById('listing-container');
+setLogoutListener();
 
 /**
  * Generates an HTML element for a post.
@@ -31,7 +33,7 @@ function generatePostHtml({
   author: { name },
 }) {
   const postContainer = document.createElement('article');
-  postContainer.classList.add('post');
+  postContainer.classList.add('post', 'container-1');
 
   const titleElement = document.createElement('h2');
   titleElement.textContent = title;
@@ -43,7 +45,12 @@ function generatePostHtml({
 
   const authorElement = document.createElement('p');
   authorElement.textContent = `Author: ${name}`;
-  postContainer.appendChild(authorElement);
+
+  const authorLink = document.createElement('a');
+  authorLink.href = `../profiles/?name=${name}`;
+  authorLink.appendChild(authorElement);
+
+  postContainer.appendChild(authorLink);
 
   const bodyElement = document.createElement('p');
   bodyElement.textContent = body;
