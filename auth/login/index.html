@@ -4,25 +4,48 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Chattery - Login</title>
     <script type="module" src="/src/app.js"></script>
   </head>
 
   <body>
-    <h1>Login</h1>
-    <form name="login">
-      <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
-      </div>
+    <div class="page-wrapper" style="justify-content: center">
+      <img
+        src="/images/logo-banner.png"
+        alt="Chattery Logo"
+        class="logo-banner drop-shadow-1"
+      />
+      <div class="form-wrapper drop-shadow-2">
+        <form name="login" class="form">
+          <h1>Sign in</h1>
+          <p>Sign in or <a href="../register/">create a new account.</a></p>
 
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
+          <div>
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+              title="Please enter a valid noroff.no or stud.noroff.no address"
+              placeholder="Your email address"
+            />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              minlength="8"
+              placeholder="Your password"
+            />
+          </div>
+          <button class="button button-big">Sign in</button>
+        </form>
       </div>
-
-      <a href="/auth/register/">Register</a>
-      <button>Login</button>
-    </form>
+    </div>
   </body>
 </html>
